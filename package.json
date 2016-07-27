@@ -1,0 +1,26 @@
+{
+  "name": "generator-wedevjs",
+  "version": "1.0.0",
+  "description": "A team generator for new apps with the MEAN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeDevJS/generator-wedevjs.git"
+  },
+  "author": "WeDevJS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeDevJS/generator-wedevjs/issues"
+  },
+  "homepage": "https://github.com/WeDevJS/generator-wedevjs#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}
