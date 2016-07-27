@@ -4,14 +4,18 @@ var plugins = require('gulp-load-plugins')({
 });
 var config = require('./gulp.config')();
 
+// Default gulp task
+gulp.task('default', ['watch']);
+
+// lint and minify js
 gulp.task('lint', function() {
   return gulp.src(config.srcJS)
     .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('default'));
+    .pipe(plugins.jshint.reporter(config.jsReporter));
 });
 
 // task to compile sass, prefix and minify css
-gulp.task('workflow', function(done) {
+gulp.task('styles', function(done) {
     gulp.src(config.sassDir)
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass({
@@ -35,4 +39,10 @@ gulp.task('workflow', function(done) {
 
     done();
 
+});
+
+// Watch JS for changes
+gulp.task('watch', function() {
+  gulp.watch(config.srcJS, ['lint']);
+  gulp.watch(config.sassDir, ['styles']);
 });
