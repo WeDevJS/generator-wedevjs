@@ -4,6 +4,13 @@ var plugins = require('gulp-load-plugins')({
 });
 var config = require('./gulp.config')();
 
+gulp.task('lint', function() {
+  return gulp.src(config.srcJS)
+    .pipe(plugins.jshint())
+    .pipe(plugins.jshint.reporter('default'));
+});
+
+// task to compile sass, prefix and minify css
 gulp.task('workflow', function(done) {
     gulp.src(config.sassDir)
         .pipe(plugins.sourcemaps.init())
@@ -25,5 +32,7 @@ gulp.task('workflow', function(done) {
         .pipe(plugins.notify({
             message: 'Styles task complete'
         }));
+
+    done();
 
 });
