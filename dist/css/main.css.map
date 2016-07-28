@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.scss"],"names":[],"mappings":"AACA,MAEC,cAHe,CAIf","file":"main.css","sourcesContent":["$font-size: 1rem;\r\nas\r\nh1{\r\n\tfont-size: $font-size;\r\n}"],"sourceRoot":"/source/"}
