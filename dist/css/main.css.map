@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAEA,KACC,iBAAA","file":"main.css","sourcesContent":["$color: #454545;\r\n\r\nbody {\r\n\tbackground-color:\t$color;\r\n}\r\n"],"sourceRoot":"/source/"}
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAEA,EACC,YAAA,IACA,UAAA","file":"main.css","sourcesContent":["$color: #454545;\r\n\r\np {\r\n\tfont-weight:bold;\r\n\tfont-size:50px;\r\n}\r\n"],"sourceRoot":"/source/"}
