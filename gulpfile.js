@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 //task default
 gulp.task('default',['styles','lint']);
 
-// lint and minify js
+// lint js
 gulp.task('lint', function() {
     return gulp.src(config.srcJS)
         .pipe(plugins.jshint({node:true}))
