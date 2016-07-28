@@ -9,22 +9,16 @@ gulp.task('default', ['watch']);
 
 // lint and minify js
 gulp.task('lint', function() {
-  return gulp.src(config.srcJS)
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter(config.jsReporter));
+    return gulp.src(config.srcJS)
+        .pipe(plugins.jshint())
+        .pipe(plugins.jshint.reporter(config.jsReporter));
 });
 
 // task to compile sass, prefix and minify css
 gulp.task('styles', function(done) {
     gulp.src(config.sassDir)
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.sass({
-            style: 'compressed',
-            errLogToConsole: false,
-            onError: function(err) {
-                return notify().write(err);
-            }
-        }))
+        .pipe(plugins.pipe(plugins.sass().on('error', plugins.notify(plugins.sass.logError))))
         .pipe(plugins.autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -43,6 +37,11 @@ gulp.task('styles', function(done) {
 
 // Watch JS for changes
 gulp.task('watch', function() {
-  gulp.watch(config.srcJS, ['lint']);
-  gulp.watch(config.sassDir, ['styles']);
+    gulp.watch(config.srcJS, ['lint']);
+    gulp.watch(config.sassDir, ['styles']);
 });
+
+function exceptionLog(error) {
+    console.log(error.toString());
+    this.emit('end');
+}
