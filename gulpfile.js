@@ -17,7 +17,6 @@ var browserSync = require('browser-sync').create();
  * Tasks
  */
 
-
 //task default
 gulp.task('default',['jade','scripts','test','styles','browser-sync']);
 
