@@ -31,7 +31,7 @@ gulp.task('browser-sync', function() {
 
     gulp.watch("./src/sass/*.scss", ['styles','reload']);
     gulp.watch("./src/js/*.js", ['scripts','test','reload']);
-    gulp.watch("./src/*.jade",['jade','reload']);
+    gulp.watch("./src/views/*.jade",['jade','reload']);
 });
 
 // Browser Sync wrapper task 
@@ -45,14 +45,14 @@ gulp.task('reload', function(cb) {
 gulp.task('jade', function() {
   var YOUR_LOCALS = {};
  
-  gulp.src('./src/*.jade')
+  gulp.src('./src/views/*.jade')
     .pipe(plugins.jade({
       locals: YOUR_LOCALS
     }))
     .pipe(gulp.dest('./dist/'))
 });
 
-// testing
+// Backend testing
 gulp.task('test',function(){
     return gulp.src('test/test.js', {read: false})
         .once('error', function() {
@@ -91,10 +91,3 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(config.cssDir));
 });
 
-// Testing framework
-
-// Watch JS for changes
-gulp.task('watch', function() {
-    gulp.watch(config.srcJS, ['scripts']);
-    gulp.watch(config.sassDir, ['styles']);
-});
