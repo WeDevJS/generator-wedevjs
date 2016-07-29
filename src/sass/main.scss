@@ -1,5 +1,53 @@
 $color: #454545;
-
-h1 {
-	font-size: 50px;
+html, body{
+	width:99.9%;
+	height:100%;
+	background-color:#000000;
 }
+nav{
+	height:8%;
+	border: 1px solid black;
+	width:100%;
+	background:#ffffff;
+	div{
+		position:relative;
+		top:33%;
+		left:10%;
+		border: 1px solid black;
+	}
+	ul{
+		margin: 0 auto;
+		list-style: none;
+		list-style-type:none;
+		float:right;
+		margin-right:20px;
+		border: 1px solid black;
+		width:700px;
+		li{
+			display:inline-block;
+			border:1px solid black;
+			margin: 10px;
+			padding:15px;
+			background-color:#ffffff;
+			border-radius:15px;
+			color:#3abeee;
+			font-weight: bold;
+		}
+		li:hover{
+			background-color:#3abeee;
+			background:#ffffff;
+		}
+	}
+
+// background-color:#3abeee;
+
+}
+.container{
+	width:100%;
+	border: 1px solid black;
+	height:91.5%;
+	background-color:#3abeee;
+}
+
+
+
