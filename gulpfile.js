@@ -94,9 +94,9 @@ gulp.task('scripts', function() {
 gulp.task('styles', function() {
     return gulp.src(config.sassDir)
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.sassLint())
+        .pipe(plugins.sassLint({configFile: './config/sass/.sass-lint.yml'})
+        .on('error', function(e){console.log(e)}))
         .pipe(plugins.sassLint.format())
-        .pipe(plugins.sassLint.failOnError())
         .pipe(plugins.sass().on('error', plugins.sass.logError))
         .pipe(plugins.autoprefixer({
             browsers: ['last 2 versions'],

@@ -1,53 +1,54 @@
 $color: #454545;
-html, body{
-	width:99.9%;
-	height:100%;
-	background-color:#000000;
+$black: #000;
+$white: #FFF;
+$teal: #3ABEEE;
+
+html,
+body {
+	background-color: $black;
+	height: 100%;
+	width: 99.9%;
 }
-nav{
-	height:8%;
-	border: 1px solid black;
-	width:100%;
-	background:#ffffff;
-	div{
-		position:relative;
-		top:33%;
-		left:10%;
-		border: 1px solid black;
+nav {
+	background: $white;
+	height: 8%;
+	border: 1px solid $black;
+	width: 100%;
+	div {
+		position: relative;
+		top: 33%;
+		left: 10%;
+		border: 1px solid $black;
 	}
-	ul{
+	ul {
 		margin: 0 auto;
 		list-style: none;
-		list-style-type:none;
-		float:right;
-		margin-right:20px;
-		border: 1px solid black;
-		width:700px;
-		li{
-			display:inline-block;
-			border:1px solid black;
+		list-style-type: none;
+		float: right;
+		margin-right: 20px;
+		border: 1px solid $black;
+		width: 700px;
+		li {
+			display: inline-block;
+			border: 1px solid $black;
 			margin: 10px;
-			padding:15px;
-			background-color:#ffffff;
-			border-radius:15px;
-			color:#3abeee;
+			padding: 15px;
+			background-color: #FFF;
+			border-radius: 15px;
+			color: $teal;
 			font-weight: bold;
 		}
-		li:hover{
-			background-color:#3abeee;
-			background:#ffffff;
+		li:hover {
+			background-color: #3abeee;
+			background: $white;
 		}
 	}
 
-// background-color:#3abeee;
-
 }
-.container{
-	width:100%;
+.container {
+	width: 100%;
 	border: 1px solid black;
-	height:91.5%;
-	background-color:#3abeee;
+	height: 91.5%;
+	background-color: $teal;
 }
-
-
 
