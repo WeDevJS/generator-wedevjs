@@ -6,6 +6,11 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
+app.use("/css", express.static(__dirname + '/../dist/css'));
+app.use("/js", express.static(__dirname + '/../dist/js'));
+
+console.log(path.resolve(__dirname + '/../dist/js'));
+
 app.get('/', function (req, res) {
   res.sendFile(path.resolve('dist/index.html'), { title: 'Hey', message: 'Hello there!'});
 });
