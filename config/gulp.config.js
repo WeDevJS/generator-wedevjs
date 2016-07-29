@@ -5,8 +5,11 @@ module.exports = function() {
         srcJS: './src/js/**/*.js',
         baseJS: './',
         jsDir: './dist/js/',
-        jsReporter: 'jshint-stylish'
+        jsReporter: 'jshint-stylish',
+        serverFiles: 'server/**/*.*',
+        serverPort: 8080,
+        serverAddress: 'http://localhost:'
     };
     
     return config;
-};
+}();

@@ -1,6 +1,6 @@
 'use strict';
 
-var config = require('./config/gulp.config')();
+var config = require('./config/gulp.config');
 
 var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')({
@@ -18,15 +18,32 @@ var browserSync = require('browser-sync').create();
  */
 
 //task default
-gulp.task('default',['jade','scripts','test','styles','browser-sync']);
+gulp.task('default',['jade','scripts','test','styles','nodemon','browser-sync']);
 
 
-// Static server
+// Nodemon task
+gulp.task('nodemon', function (done) {
+    var running = false;
+
+  return plugins.nodemon({
+    script: './server/server.js',
+    watch: config.serverFiles
+  }).on('start', function() {
+            if(!running){
+                done();
+            }
+            running = true;
+        }).on('restart', function(){
+            setTimeout(browserSync.reload({stream: false}),500);        
+        })
+    }
+);
+
+// frontend sync server
 gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./dist/"
-        }
+    browserSync.init(null,{
+        proxy: config.serverAddress + config.serverPort,
+        port: 10080
     });
 
     gulp.watch("./src/sass/*.scss", ['styles','reload']);
@@ -36,9 +53,8 @@ gulp.task('browser-sync', function() {
 
 // Browser Sync wrapper task 
 // allows for proper injection of css files
-gulp.task('reload', function(cb) {
+gulp.task('reload',function(){
     browserSync.reload();
-    cb();
 });
 
 // jade compile to HTML
@@ -90,4 +106,3 @@ gulp.task('styles', function() {
         .pipe(plugins.sourcemaps.write('./'))
         .pipe(gulp.dest(config.cssDir));
 });
-
