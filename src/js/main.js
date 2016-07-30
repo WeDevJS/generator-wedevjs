@@ -1,9 +1,21 @@
-function someFunction(text) {
-	console.log(text);
-}
+var app = angular.module('app', []);
 
-$('.selection').on('click',function(){
-	console.log("www.google.com");
+app.service('helloService', function(){
+	this.helloService = function(){
+		console.log('Hello Service');
+	}
 })
 
-someFunction("Hello world");
+app.factory('helloFactory', function(){
+	var factory = {};
+
+	factory.helloFactory = function(){
+		console.log('Hello Factory');
+	};
+	return factory
+})
+
+app.controller('mainController', function(helloService, helloFactory){
+	helloFactory.helloFactory();
+	helloService.helloService();
+});

@@ -27,13 +27,13 @@ gulp.task('nodemon', function (done) {
 
   return plugins.nodemon({
     script: './server/server.js',
-    watch: config.serverFiles
+    watch: config.serverFiles,
   }).on('start', function() {
             if(!running){
                 done();
             }
             running = true;
-        }).on('restart', function(){
+        }).on('restart', ['lintServer','test'],function(){
             setTimeout(browserSync.reload({stream: false}),500);        
         })
     }
@@ -47,8 +47,8 @@ gulp.task('browser-sync', function() {
     });
 
     gulp.watch("./src/sass/*.scss", ['styles','reload']);
-    gulp.watch("./src/js/*.js", ['scripts','test','reload']);
-    gulp.watch("./src/views/*.jade",['jade','reload']);
+    gulp.watch(config.srcJS, ['scripts','test','reload']);
+    gulp.watch("./src/views/**/*.jade",['jade','reload']);
 });
 
 // Browser Sync wrapper task 
@@ -78,8 +78,16 @@ gulp.task('test',function(){
 });
 
 // lint and minify js
+gulp.task('lintServer', function() {
+    gulp.src(config.serverFiles)
+        .pipe(plugins.jshint({node:true}))  
+        .pipe(plugins.jshint.reporter(config.jsReporter));        
+});
+
+// lint and minify js
 gulp.task('scripts', function() {
-    gulp.src(config.baseJS)
+    // Created 2 lints so gulp doesnt write non app files that need linting
+    gulp.src([config.baseJS,config.serverFiles])
         .pipe(plugins.jshint({node:true}))  
         .pipe(plugins.jshint.reporter(config.jsReporter));
 

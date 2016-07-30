@@ -2,25 +2,9 @@
 //- Include Header
 include ./includes/header.jade
 
-nav
-	div
-		a(href="#") Remedy
-	ul
-		li.selection About
-		li Services
-		li Pricing
-		li Our Story
-		li Make an Appointment
-
-.container
+.container(ng-controller="mainController")
 	h1 This is our application! 
 	h2 Esta es nuestra applicacion!
-	table
-		th Nombre
-		th Edad
-		tr
-			td Juan pablo
-			td 18
 
 //- Include Footer
 include ./includes/footer.jade
