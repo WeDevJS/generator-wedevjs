@@ -1,5 +1,5 @@
 module.exports = function() {
-    var config = {
+    const config = {
         sassDir: './src/sass/**/*.scss',
         cssDir: './dist/css/',
         srcJS: './src/js/**/*.js',
