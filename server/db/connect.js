@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/test');
 
+var config = require('../../config/gulp.config');
 var FormSchema = new mongoose.Schema({
     name: String,
     created: {type: Date, default: Date.now}
@@ -18,7 +18,11 @@ var Form = mongoose.model("Form", FormSchema);
 // form1.save();
 
 console.log('connected to db');
-
+mongoose.connect(config.server.mongo.url, config.server.mongo.options);
+mongoose.connection.on('error', function(err) {
+  console.error('MongoDB connection error: ' + err);
+  process.exit(-1);
+});
 module.exports = {
 	receiveAllData : function (cb){
 			Form.find(function(err, data){
