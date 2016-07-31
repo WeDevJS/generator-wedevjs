@@ -26,8 +26,8 @@ gulp.task('nodemon', function (done) {
     var running = false;
 
   return plugins.nodemon({
-    script: './server/server.js',
-    watch: config.serverFiles,
+    script: config.server.serverConfig,
+    watch: config.server.files,
   }).on('start', function() {
             if(!running){
                 done();
@@ -42,13 +42,13 @@ gulp.task('nodemon', function (done) {
 // frontend sync server
 gulp.task('browser-sync', function() {
     browserSync.init(null,{
-        proxy: config.serverAddress + config.serverPort,
+        proxy: config.server.address + config.server.port,
         port: 10080
     });
 
-    gulp.watch("./src/sass/*.scss", ['styles','reload']);
-    gulp.watch(config.srcJS, ['scripts','test','reload']);
-    gulp.watch("./src/views/**/*.jade",['jade','reload']);
+    gulp.watch(config.client.sass, ['styles','reload']);
+    gulp.watch(config.client.js, ['scripts','test','reload']);
+    gulp.watch(config.client.jade,['jade','reload']);
 });
 
 // Browser Sync wrapper task 
@@ -61,16 +61,16 @@ gulp.task('reload',function(){
 gulp.task('jade', function() {
   var YOUR_LOCALS = {};
  
-  gulp.src('./src/views/*.jade')
+  gulp.src(config.client.jade)
     .pipe(plugins.jade({
       locals: YOUR_LOCALS
     }))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest(config.dist.base))
 });
 
 // Backend testing
 gulp.task('test',function(){
-    return gulp.src('test/test.js', {read: false})
+    return gulp.src(config.test.testConfig, {read: false})
         .once('error', function() {
             process.exit(1);
         })
@@ -79,7 +79,7 @@ gulp.task('test',function(){
 
 // lint and minify js
 gulp.task('lintServer', function() {
-    gulp.src(config.serverFiles)
+    gulp.src(config.server.files)
         .pipe(plugins.jshint({node:true}))  
         .pipe(plugins.jshint.reporter(config.jsReporter));        
 });
@@ -87,22 +87,26 @@ gulp.task('lintServer', function() {
 // lint and minify js
 gulp.task('scripts', function() {
     // Created 2 lints so gulp doesnt write non app files that need linting
-    gulp.src([config.baseJS,config.serverFiles])
+    gulp.src([config.base,config.server.files])
         .pipe(plugins.jshint({node:true}))  
         .pipe(plugins.jshint.reporter(config.jsReporter));
 
-    return gulp.src(config.srcJS)
+    return gulp.src(config.client.js)
         .pipe(plugins.jshint({node:true}))
         .pipe(plugins.jshint.reporter(config.jsReporter))
-        .pipe(gulp.dest(config.jsDir))
+        .pipe(plugins.rename({suffix:'.min'}))
+        .pipe(plugins.uglify().on('error',function(){
+                
+        }))
+        .pipe(gulp.dest(config.dist.js))
         
 });
 
 // task to compile sass, prefix and minify css
 gulp.task('styles', function() {
-    return gulp.src(config.sassDir)
+    return gulp.src(config.client.sass)
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.sassLint({configFile: './config/sass/.sass-lint.yml'})
+        .pipe(plugins.sassLint({configFile: config.client.sassGuide})
         .on('error', function(e){console.log(e)}))
         .pipe(plugins.sassLint.format())
         .pipe(plugins.sass().on('error', plugins.sass.logError))
@@ -112,5 +116,5 @@ gulp.task('styles', function() {
         }))
         .pipe(plugins.minifycss())
         .pipe(plugins.sourcemaps.write('./'))
-        .pipe(gulp.dest(config.cssDir));
+        .pipe(gulp.dest(config.dist.css));
 });

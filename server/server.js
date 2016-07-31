@@ -7,15 +7,15 @@ var db = require('./db/connect');
 var express = require('express');
 var app = express();
 
-app.use("/css", express.static(__dirname + '/../dist/css'));
-app.use("/js", express.static(__dirname + '/../dist/js'));
+app.use("/css", express.static(path.resolve(__dirname + '/..'+config.dist.css)));
+app.use("/js", express.static(path.resolve(__dirname + '/..'+config.dist.js)));
 
-console.log(path.resolve(__dirname + '/../dist/js'));
+// console.log(path.resolve(__dirname + '/../dist/js'));
 
 app.get('/', function (req, res) {
 	console.log("Got hit on /");
     res.setHeader('Content-Type', 'text/html; charset=utf-8');	
-	res.sendFile(path.resolve('dist/index.html'));
+	res.sendFile(path.resolve(config.dist.base+'index.html'));
 });
 
 app.get('/api/form', function (req, res) {
@@ -26,10 +26,13 @@ app.get('/api/form', function (req, res) {
 	});
 });
 
-app.listen(config.serverPort, function () {
-  console.log('app listening on port ' + config.serverPort);
+app.listen(config.server.port, function () {
+  console.log('app listening on port ' + config.server.port);
+  console.log(path.resolve(__dirname + '/..'+config.dist.css));
+  // console.log(__dirname + '/..'+config.dist.css);
+
 });
 
 // Put a friendly message on the terminal
-console.log("Server running at " + config.serverAddress + config.serverPort);
+console.log("Server running at " + config.server.address + config.server.port);
 

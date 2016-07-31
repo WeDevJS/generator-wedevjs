@@ -1,14 +1,35 @@
 module.exports = function() {
-    var config = {
-        sassDir: './src/sass/**/*.scss',
-        cssDir: './dist/css/',
-        srcJS: './src/js/**/*.js',
-        baseJS: './',
-        jsDir: './dist/js/',
-        jsReporter: 'jshint-stylish',
-        serverFiles: 'server/**/*.*',
-        serverPort: 8080,
-        serverAddress: 'http://localhost:'
+    const config = {
+        base: './',
+        client:{
+            sass: './src/sass/**/*.scss',
+            sassGuide:'./config/sass/.sass-lint.yml',
+            js: './src/js/**/*.js',
+            jade:'./src/views/**/*.jade'
+        },
+        server:{
+            serverConfig:'./server/server.js',
+            files: 'server/**/*.*',
+            port: 8080,
+            address: 'http://localhost:',
+            // MongoDB connection options
+            mongo: {
+                url: 'mongodb://localhost/wedevjs',
+                options:{
+
+                }
+            }
+        },
+        dist:{
+            base:'/dist/',
+            css: '/dist/css/',
+            js: './dist/js/'
+        },
+        test:{
+            testConfig:'test/test.js'
+        }, 
+        jsReporter: 'jshint-stylish'
+       
     };
     
     return config;
