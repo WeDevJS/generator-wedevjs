@@ -10,7 +10,7 @@ module.exports = function() {
         server:{
             serverConfig:'./server/server.js',
             files: 'server/**/*.*',
-            port: 8080,
+            port: 3000,
             address: 'http://localhost:',
             // MongoDB connection options
             mongo: {

@@ -28,8 +28,7 @@ app.get('/api/form', function (req, res) {
 
 app.listen(config.server.port, function () {
   console.log('app listening on port ' + config.server.port);
-  console.log(path.resolve(__dirname + '/..'+config.dist.css));
-  // console.log(__dirname + '/..'+config.dist.css);
+ 
 
 });
 
