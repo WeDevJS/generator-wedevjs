@@ -1,4 +1,6 @@
 'use strict';
+var exec = require('child_process').exec;
+var mkdirs = require('mkdirs');
 
 var config = require('./config/gulp.config');
 
@@ -18,7 +20,7 @@ var browserSync = require('browser-sync').create();
  */
 
 //task default
-gulp.task('default',['jade','scripts','test','styles','nodemon','browser-sync']);
+gulp.task('default',['jade','scripts','test','styles', 'mongo-start','nodemon','browser-sync']);
 
 
 // Nodemon task
@@ -27,7 +29,7 @@ gulp.task('nodemon', function (done) {
 
   return plugins.nodemon({
     script: config.server.serverConfig,
-    watch: config.server.files,
+    watch: [config.server.files,config.server.ignoreDB],
   }).on('start', function() {
             if(!running){
                 done();
@@ -79,7 +81,7 @@ gulp.task('test',function(){
 
 // lint and minify js
 gulp.task('lintServer', function() {
-    gulp.src(config.server.files)
+    gulp.src([config.server.files, config.server.ignoreDB])
         .pipe(plugins.jshint({node:true}))  
         .pipe(plugins.jshint.reporter(config.jsReporter));        
 });
@@ -87,7 +89,7 @@ gulp.task('lintServer', function() {
 // lint and minify js
 gulp.task('scripts', function() {
     // Created 2 lints so gulp doesnt write non app files that need linting
-    gulp.src([config.base,config.server.files])
+    gulp.src([config.base,config.server.files, config.server.ignoreDB])
         .pipe(plugins.jshint({node:true}))  
         .pipe(plugins.jshint.reporter(config.jsReporter));
 
@@ -118,3 +120,19 @@ gulp.task('styles', function() {
         .pipe(plugins.sourcemaps.write('./'))
         .pipe(gulp.dest(config.dist.css));
 });
+
+gulp.task("mongo-start", function(done) {
+  var command = "mongod --dbpath=./server/db/data/";
+  runCommand(command, done);
+});
+
+var runCommand = function(command, cb) {
+  exec(command, function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    if (err !== null) {
+      console.log('exec error: ' + err);
+    }
+    cb()
+  });
+}
