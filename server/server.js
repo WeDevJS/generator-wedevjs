@@ -7,10 +7,9 @@ var db = require('./db/connect');
 var express = require('express');
 var app = express();
 
-app.use("/css", express.static(path.resolve(__dirname + '/..'+config.dist.css)));
-app.use("/js", express.static(path.resolve(__dirname + '/..'+config.dist.js)));
+app.use(express.static(path.resolve(__dirname + '/../' + config.dist.base)));
 
-// console.log(path.resolve(__dirname + '/../dist/js'));
+console.log(path.resolve(__dirname + '/../' + config.dist.css));
 
 app.get('/', function (req, res) {
 	console.log("Got hit on /");

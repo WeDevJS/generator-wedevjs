@@ -20,7 +20,7 @@ var browserSync = require('browser-sync').create();
  */
 
 //task default
-gulp.task('default',['jade','scripts','test','styles', 'mongo-start','nodemon','browser-sync']);
+gulp.task('default',['jade','scripts','test','styles', 'mongo-start','nodemon','browser-sync','reload']);
 
 
 // Nodemon task
@@ -63,7 +63,7 @@ gulp.task('reload',function(){
 gulp.task('jade', function() {
   var YOUR_LOCALS = {};
  
-  gulp.src(config.client.jade)
+  gulp.src([config.client.jade, config.client.jadeExcludes])
     .pipe(plugins.jade({
       locals: YOUR_LOCALS
     }))
