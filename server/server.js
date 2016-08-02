@@ -9,7 +9,7 @@ var app = express();
 app.set('view engine', 'pug');
 
 app.use(express.static(path.resolve(__dirname + '/../' + config.client.base)));
-
+app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
 
 app.get('/', function (req, res) {
 	console.log("Got hit on /");
