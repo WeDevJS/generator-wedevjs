@@ -2,10 +2,13 @@ module.exports = function() {
     const config = {
         base: './',
         client:{
-            sass: './src/sass/**/*.scss',
+            base:'./app/',
+            sass: './app/assets/styles/**/*.scss',
+            css: './app/assets/styles/**/*.css',
             sassGuide:'./config/sass/.sass-lint.yml',
-            js: './src/js/**/*.js',
-            jade:'./src/views/**/*.jade'
+            js: './app/assets/scripts/**/*.js',
+            images:'./app/assets/images/',
+            views:'./app/views/**/*.jade'
         },
         server:{
             serverConfig:'./server/server.js',
