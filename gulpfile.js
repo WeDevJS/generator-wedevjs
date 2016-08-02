@@ -12,4 +12,4 @@ wrench
   .map(function(file) {
     require('./gulp-tasks/' + file);
   });
-gulp.task('default',['jade','scripts','test','styles', 'mongo-start', 'inject','wiredep','nodemon','browser-sync']);
+gulp.task('default',['jade','scripts','test','styles', 'mongo-start','wiredep','nodemon','browser-sync']);
