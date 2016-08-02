@@ -1,0 +1,16 @@
+{
+  "name": "generator-wedevjs",
+  "description": "Generator for WeDevJS",
+  "main": "gulpfile.js",
+  "authors": [
+    "WeDevJS"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/WeDevJS/generator-wedevjs",
+  "moduleType": [],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "normalize-css": "^4.2.0"
+  }
+}

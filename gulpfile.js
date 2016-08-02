@@ -14,13 +14,16 @@ var gulp = require('gulp'),
 	});
 
 var browserSync = require('browser-sync').create();
+var wiredep = require("wiredep").stream;
+
 
 /**
  * Tasks
  */
 
 //task default
-gulp.task('default',['jade','scripts','test','styles', 'mongo-start','nodemon','browser-sync','reload']);
+
+gulp.task('default',['jade','scripts','test','styles', 'mongo-start', 'inject','wiredep','nodemon','browser-sync']);
 
 
 // Nodemon task
@@ -49,8 +52,10 @@ gulp.task('browser-sync', function() {
     });
 
     gulp.watch(config.client.sass, ['styles','reload']);
-    gulp.watch(config.client.js, ['scripts','test','reload']);
-    gulp.watch(config.client.jade,['jade','reload']);
+    gulp.watch(config.client.js, ['scripts','inject','test','reload']);
+    gulp.watch(config.client.css,['inject']);
+    gulp.watch(config.client.views,['jade','reload']);
+    gulp.watch("./bower.json", ["wiredep"]);
 });
 
 // Browser Sync wrapper task 
@@ -63,13 +68,31 @@ gulp.task('reload',function(){
 gulp.task('jade', function() {
   var YOUR_LOCALS = {};
  
-  gulp.src([config.client.jade, config.client.jadeExcludes])
+  gulp.src(config.client.views)
     .pipe(plugins.jade({
       locals: YOUR_LOCALS
     }))
-    .pipe(gulp.dest(config.dist.base))
+    .pipe(gulp.dest(config.client.base))
 });
 
+gulp.task("inject", ["wiredep"] ,function () {
+    var sources = gulp.src([config.client.js, config.client.css], {read: false});
+
+    return gulp.src(config.client.base+"index.html")
+    .pipe(plugins.inject(sources))
+    .pipe(gulp.dest(config.client.base));
+});
+gulp.task("wiredep", function () {
+    return gulp.src(config.client.base+"index.html")
+    .pipe(wiredep({
+        directory: "./bower_components",
+        read: false,
+        onError: function (err) {
+            console.log(err.code);
+        }
+    }))
+    .pipe(gulp.dest(config.client.base));
+});
 // Backend testing
 gulp.task('test',function(){
     return gulp.src(config.test.testConfig, {read: false})

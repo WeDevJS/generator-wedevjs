@@ -2,11 +2,13 @@ module.exports = function() {
     const config = {
         base: './',
         client:{
-            sass: './src/sass/**/*.scss',
+            base:'./app/',
+            sass: './app/assets/styles/**/*.scss',
+            css: './app/assets/styles/**/*.css',
             sassGuide:'./config/sass/.sass-lint.yml',
-            js: './src/js/**/*.js',
-            jade:'./src/views/**/*.jade',
-            jadeExcludes:'!src/views/includes/*.jade'
+            js: './app/assets/scripts/**/*.js',
+            images:'./app/assets/images/',
+            views:'./app/views/**/*.jade'
         },
         server:{
             serverConfig:'./server/server.js',
@@ -23,8 +25,8 @@ module.exports = function() {
             }
         },
         dist:{
-            base:'./dist/',
-            css: './dist/css/',
+            base:'/dist/',
+            css: '/dist/css/',
             js: './dist/js/'
         },
         test:{
