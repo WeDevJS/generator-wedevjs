@@ -10,7 +10,7 @@
   "moduleType": [],
   "dependencies": {
     "angular": "^1.5.8",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "3.3.4",
     "normalize-css": "^4.2.0"
   }
 }

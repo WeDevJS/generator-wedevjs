@@ -18,11 +18,11 @@ gulp.task("wiredep", function () {
     .pipe(gulp.dest(config.client.base+'views/includes/'));
 });
 
-// Inject dependencies
-gulp.task("inject", ["wiredep"] ,function () {
-    var sources = gulp.src([config.client.js, config.client.css], {read: false});
+// // Inject dependencies
+// gulp.task("inject", ["wiredep"] ,function () {
+//     var sources = gulp.src([config.client.js, config.client.css], {read: false});
 
-    return gulp.src(config.client.base+"index.html")
-    .pipe(plugins.inject(sources))
-    .pipe(gulp.dest(config.client.base));
-});
+//     return gulp.src(config.client.base+"index.html")
+//     .pipe(plugins.inject(sources))
+//     .pipe(gulp.dest(config.client.base));
+// });
