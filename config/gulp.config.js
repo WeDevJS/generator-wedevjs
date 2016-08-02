@@ -6,6 +6,7 @@ module.exports = function() {
             sass: './app/assets/styles/**/*.scss',
             css: './app/assets/styles/**/*.css',
             sassGuide:'./config/sass/.sass-lint.yml',
+            assets:'./app/assets/',
             js: './app/assets/scripts/**/*.js',
             images:'./app/assets/images/',
             Allviews:'./app/views/**/*.jade',

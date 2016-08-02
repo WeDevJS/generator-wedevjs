@@ -1,19 +1,15 @@
 var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')({
-	    lazy: true,
-	    rename:{
-	    	'gulp-minify-css':'minifycss',
-	    	'gulp-sass-lint':'sassLint',
-	    }
+	    lazy: true
 	}),
- 	config = require('../config/gulp.config');
-
-var wiredep = require("wiredep").stream;
+ 	config = require('../config/gulp.config'),
+    wiredep = require("wiredep").stream;
 
 gulp.task("wiredep", function () {
     return gulp.src([config.client.base+"/views/includes/footer.jade",config.client.base+"/views/includes/header.jade"])
     .pipe(wiredep({
         directory: "./bower_components",
+        ignorePath: '../../../',
         read: false,
         onError: function (err) {
             console.log(err.code);
