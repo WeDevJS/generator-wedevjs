@@ -8,7 +8,9 @@ module.exports = function() {
             sassGuide:'./config/sass/.sass-lint.yml',
             js: './app/assets/scripts/**/*.js',
             images:'./app/assets/images/',
-            views:'./app/views/**/*.jade'
+            Allviews:'./app/views/**/*.jade',
+            views:'./app/views/',
+            excludeViewsInclude:'!app/views/includes/**/*.jade'
         },
         server:{
             serverConfig:'./server/server.js',
@@ -25,8 +27,8 @@ module.exports = function() {
             }
         },
         dist:{
-            base:'/dist/',
-            css: '/dist/css/',
+            base:'./dist/',
+            css: './dist/css/',
             js: './dist/js/'
         },
         test:{

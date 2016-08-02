@@ -6,15 +6,15 @@ var db = require('./db/connect');
 
 var express = require('express');
 var app = express();
+app.set('view engine', 'pug');
 
-app.use(express.static(path.resolve(__dirname + '/../' + config.dist.base)));
+app.use(express.static(path.resolve(__dirname + '/../' + config.client.base)));
 
-console.log(path.resolve(__dirname + '/../' + config.dist.css));
 
 app.get('/', function (req, res) {
 	console.log("Got hit on /");
     res.setHeader('Content-Type', 'text/html; charset=utf-8');	
-	res.sendFile(path.resolve(config.dist.base+'index.html'));
+	res.render(path.resolve(config.client.views + 'index.jade'));
 });
 
 app.get('/api/form', function (req, res) {
