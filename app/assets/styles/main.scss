@@ -10,13 +10,17 @@ html {
 body {
 	width: 100%;
 	background-color:$siteBackground;
+	margin-top:50px;
 }
 .navbar{
 	background-color: $siteBackground;
 	.navbar-brand{
 		color:$white;
 	}
-	@media (max-width: 768px) {
+	.navbar-right{
+		margin-right: 0;
+	}
+	@media (max-width: 767px) {
 		.navbar-nav {
   			display: inline-block;
   			float: none;
@@ -31,8 +35,8 @@ body {
 	}
 } 
 
-.carousel{
-	height:100%;
+.carousel-inner{
+	max-height:500px;
 	width:100%;
 }
 
