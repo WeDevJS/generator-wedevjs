@@ -5,10 +5,10 @@ var gulp = require('gulp'),
  	config = require('../config/gulp.config');
 
 // Backend testing
-gulp.task('test',function(){
+gulp.task('test',['nodemon'],function(){
     return gulp.src(config.test.testConfig, {read: false})
         .once('error', function() {
             process.exit(1);
         })
-        .pipe(plugins.mocha({reporter: 'progress'}));
+        .pipe(plugins.mocha({reporter: 'list'}));
 });

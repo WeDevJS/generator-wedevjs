@@ -17,7 +17,6 @@ var Form = mongoose.model("Form", FormSchema);
 // save the form
 // form1.save();
 
-console.log('connected to db');
 mongoose.connect(config.server.mongo.url, config.server.mongo.options);
 mongoose.connection.on('error', function(err) {
   console.error('MongoDB connection error: ' + err);

@@ -1,17 +1,44 @@
 $color: #454545;
 $black: #000;
 $white: #FFF;
-$teal: #3ABEEE;
+$siteBackground: #3A414C;
+
+
 html {
 	min-height: 100%;
 }
 body {
 	width: 100%;
-	background-color: $teal;
+	background-color:$siteBackground;
 }
+.navbar{
+	background-color: $siteBackground;
+	.navbar-brand{
+		color:$white;
+	}
+	@media (max-width: 768px) {
+		.navbar-nav {
+  			display: inline-block;
+  			float: none;
+  			vertical-align: top;
+  			width: 100%;
+  			text-align:center;
+  			margin:0 auto;
+		}
+		.navbar-collapse{
+ 			padding:0;
+		}
+	}
+} 
+
+.carousel{
+	height:100%;
+	width:100%;
+}
+
 .container {
 	width: 100%;
 	height: 100%;
-	background-color: $teal;
 }
+
 

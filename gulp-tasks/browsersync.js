@@ -14,7 +14,7 @@ gulp.task('browser-sync', function() {
     });
 
     gulp.watch(config.client.sass, ['styles','reload']);
-    gulp.watch(config.client.js, ['scripts','inject','test','reload']);
+    gulp.watch(config.client.js, ['scripts','wiredep','test','reload']);
     gulp.watch(config.client.css,['inject']);
     gulp.watch(config.client.Allviews,['jade','reload']);
     gulp.watch("./bower.json", ["wiredep"]);
