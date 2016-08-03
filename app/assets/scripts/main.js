@@ -1,3 +1,6 @@
+// carusel
+$('.carousel').carousel();
+
 var app = angular.module('app', []);
 
 app.service('helloService', function(){

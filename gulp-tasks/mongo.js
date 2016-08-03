@@ -6,18 +6,25 @@ var exec = require('child_process').exec,
     });
 
 
-gulp.task("mongo-start", function(done) {
+gulp.task("mongo-start", function() {
+  var running = false;
   var command = "mongod --dbpath=./server/db/data/";
-  runCommand(command, done);
+  runCommand(running, command, function(err){
+    console.log(err);
+  });
 });
 
-var runCommand = function(command, cb) {
-  exec(command, function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    if (err !== null) {
-      console.log('exec error: ' + err);
-    }
-    cb()
-  });
+var runCommand = function(running, command, cb) {
+    if (running === false){
+    exec(command, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      if (err !== null) {
+        console.log('exec error: ' + err);
+      }
+      cb(err);
+    });
+  }else{
+    console.log("Mongo is already running");
+  }
 }

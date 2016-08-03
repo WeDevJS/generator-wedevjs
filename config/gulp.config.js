@@ -33,7 +33,7 @@ module.exports = function() {
             js: './dist/js/'
         },
         test:{
-            testConfig:'test/test.js'
+            testConfig:'test/**/*.js'
         }, 
         jsReporter: 'jshint-stylish'
        

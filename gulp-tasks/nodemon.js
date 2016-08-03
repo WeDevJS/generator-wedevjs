@@ -6,12 +6,12 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create();
 
 // Nodemon task
-gulp.task('nodemon', function (done) {
+gulp.task('nodemon', ['mongo-start'], function (done) {
     var running = false;
 
   return plugins.nodemon({
     script: config.server.serverConfig,
-    watch: [config.server.files,config.server.ignoreDB],
+    watch: [config.server.files,config.server.ignoreDB,config.test.testConfig],
   }).on('start', function() {
             if(!running){
                 done();

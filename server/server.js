@@ -27,8 +27,6 @@ app.get('/api/form', function (req, res) {
 
 app.listen(config.server.port, function () {
   console.log('app listening on port ' + config.server.port);
- 
-
 });
 
 // Put a friendly message on the terminal
