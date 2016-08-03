@@ -1,15 +1,21 @@
-.container.fill
-	#myCarousel.carousel.slide
-		.carousel-inner
-			.active.item
-				.slide1(style="background-image:url('assets/images/flowers.jpg');")
-					.container
-			.item
-				.slide2(style="background-image:url('/assets/images/flowers.jpg');")
-					.container
-			.item
-				.slide3
-					.container
-		.pull-center
-			a.carousel-control.left(href="#myCarousel", data-slide="prev")
-			a.carousel-control.right(href="#myCarousel", data-slide="next")
+div#carousel.carousel.slide(data-ride='carousel')
+	ol.carousel-indicators
+		li(data-target='#carousel' data-slide-to='0' class='active')
+		li(data-target='#carousel' data-slide-to='1' class='active')
+		li(data-target='#carousel' data-slide-to='2' class='active')
+		li(data-target='#carousel' data-slide-to='3' class='active')
+		li(data-target='#carousel' data-slide-to='4' class='active')
+		li(data-target='#carousel' data-slide-to='5' class='active')
+	div.carousel-inner(role='list-box')
+		div.item.active: img.center-block(src='http://placehold.it/980x500')
+		div.item: img.center-block(src='http://placehold.it/980x500')
+		div.item: img.center-block(src='http://placehold.it/980x500')
+		div.item: img.center-block(src='http://placehold.it/980x500')
+		div.item: img.center-block(src='http://placehold.it/980x500')
+		div.item: img.center-block(src='http://placehold.it/980x500')
+	a.left.carousel-control(href='#carousel' role='button' data-slide='prev')
+		span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+		span(sr-only='true') Previous
+	a.right.carousel-control(href='#carousel' role='button' data-slide='next')
+		span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+		span(sr-only='true') Next
