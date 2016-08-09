@@ -6,17 +6,16 @@ var db = require('./db/connect');
 
 var express = require('express');
 var app = express();
+app.set('view engine', 'pug');
 
-app.use("/app/assets/styles", express.static(path.resolve(__dirname + '/.'+config.client.base+'./assets/styles')));
-app.use("/app/assets/scripts", express.static(path.resolve(__dirname + '/.'+config.client.base+'./assets/scripts')));
-app.use("/bower_components", express.static(path.resolve(__dirname + '/.'+'./bower_components')));
 
-// console.log(path.resolve(__dirname + '/../dist/js'));
+app.use('/assets',express.static(path.resolve(__dirname + '/../' + config.dist.base)));
+app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
 
 app.get('/', function (req, res) {
 	console.log("Got hit on /");
     res.setHeader('Content-Type', 'text/html; charset=utf-8');	
-	res.sendFile(path.resolve(config.client.base+'index.html'));
+	res.render(path.resolve(config.client.views + 'index.jade'));
 });
 
 app.get('/api/form', function (req, res) {

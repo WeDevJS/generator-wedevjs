@@ -6,13 +6,17 @@ module.exports = function() {
             sass: './app/assets/styles/**/*.scss',
             css: './app/assets/styles/**/*.css',
             sassGuide:'./config/sass/.sass-lint.yml',
-            js: './app/assets/scripts/**/*.js',
+            assets:'./app/assets/',
+            js: ['./app/assets/scripts/**/*.js','./app/controllers/**/*.js','./app/directives/**/*.js'],
             images:'./app/assets/images/',
-            views:'./app/views/**/*.jade'
+            Allviews:'./app/views/**/*.jade',
+            views:'./app/views/',
+            excludeViewsInclude:'!app/views/includes/**/*.jade'
         },
         server:{
             serverConfig:'./server/server.js',
             files: 'server/**/*.*',
+            ignoreDB: '!server/db/data/**/**.*',
             port: 3000,
             address: 'http://localhost:',
             // MongoDB connection options
@@ -24,12 +28,12 @@ module.exports = function() {
             }
         },
         dist:{
-            base:'/dist/',
-            css: '/dist/css/',
+            base:'./dist/',
+            css: './dist/css/',
             js: './dist/js/'
         },
         test:{
-            testConfig:'test/test.js'
+            testConfig:'test/**/*.js'
         }, 
         jsReporter: 'jshint-stylish'
        

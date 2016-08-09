@@ -1,2 +1,2 @@
-.container,body,html{width:100%;height:100%}body,html{background-color:#000}.container{background-color:#3ABEEE}
+.navbar,body{background-color:#3A414C}html{min-height:100%}body{margin-top:50;width:100%}.navbar .navbar-brand{color:#FFF}.navbar .navbar-right{margin-right:0}@media (max-width:767px){.navbar .navbar-nav{display:inline-block;float:none;margin:0 auto;text-align:center;vertical-align:top;width:100%}.navbar .navbar-collapse{padding:0}}.carousel-inner{max-height:500;width:100%}.container{height:100%;width:100%}
 /*# sourceMappingURL=main.css.map */

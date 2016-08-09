@@ -1,12 +1,27 @@
-var mocha = require('mocha');
-var chai = require('chai');
+var mocha = require('mocha'),
+	chai = require('chai'),
+	config = require('../config/gulp.config'),
+	server = config.server.address + config.server.port,
+	request = require('superagent');
 
-var assert = require('chai').assert;
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal(-1, [1,2,3].indexOf(5));
-      assert.equal(-1, [1,2,3].indexOf(0));
-    });
-  });
+request(server, function (error, res, body) {
+  if (!error && res.statusCode == 200) {
+    console.log(body); // Show the HTML for the Google homepage.
+  }else{
+  	console.log(error, res.statusCode);
+  }
 });
+
+// var assert = require('chai').assert;
+// describe('HomePage', function() {
+//   describe('Status Code', function() {
+//     it('should return a 200 status code', function(done) {
+//        request
+// 		   .get(server)
+// 		   .end(function(err, res){
+// 		   		assert(res.status === 200, "Response to homepage should be 200 and not " + res.status);
+// 		   		done();
+// 	   });
+//     });
+//   });
+// });
