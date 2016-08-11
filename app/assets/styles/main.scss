@@ -1,23 +1,23 @@
 $color: #454545;
 $black: #000;
 $white: #FFF;
-$siteBackground: #3A414C;
+$site-background: #3A414C;
 
 
 html {
 	min-height: 100%;
 }
 body {
+	background-color: $site-background;
+	margin-top: 50;
 	width: 100%;
-	background-color:$siteBackground;
-	margin-top:50px;
 }
-.navbar{
-	background-color: $siteBackground;
-	.navbar-brand{
-		color:$white;
+.navbar {
+	background-color: $site-background;
+	.navbar-brand {
+		color: $white;
 	}
-	.navbar-right{
+	.navbar-right {
 		margin-right: 0;
 	}
 	.login{
@@ -27,26 +27,26 @@ body {
 		.navbar-nav {
   			display: inline-block;
   			float: none;
+  			margin: 0 auto;
+  			text-align: center;
   			vertical-align: top;
   			width: 100%;
-  			text-align:center;
-  			margin:0 auto;
 		}
-		.navbar-collapse{
- 			padding:0;
+		.navbar-collapse {
+ 			padding: 0;
 		}
 
 	}
 } 
 
-.carousel-inner{
-	max-height:500px;
-	width:100%;
+.carousel-inner {
+	max-height: 500;
+	width: 100%;
 }
 
 .container {
-	width: 100%;
 	height: 100%;
+	width: 100%;
 }
 
 

@@ -7,7 +7,7 @@ module.exports = function() {
             css: './app/assets/styles/**/*.css',
             sassGuide:'./config/sass/.sass-lint.yml',
             assets:'./app/assets/',
-            js: './app/assets/scripts/**/*.js',
+            js: ['./app/assets/scripts/**/*.js','./app/controllers/**/*.js','./app/directives/**/*.js'],
             images:'./app/assets/images/',
             Allviews:'./app/views/**/*.jade',
             views:'./app/views/',
