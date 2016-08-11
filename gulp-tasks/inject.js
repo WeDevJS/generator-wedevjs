@@ -8,6 +8,7 @@ var gulp = require('gulp'),
 gulp.task("wiredep", function () {
     return gulp.src([config.client.base+"/views/includes/footer.jade",config.client.base+"/views/includes/header.jade"])
     .pipe(wiredep({
+        devDependencies: true,
         directory: "./bower_components",
         ignorePath: '../../../',
         read: false,

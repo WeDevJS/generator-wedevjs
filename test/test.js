@@ -4,14 +4,6 @@ var mocha = require('mocha'),
 	server = config.server.address + config.server.port,
 	request = require('superagent');
 
-request(server, function (error, res, body) {
-  if (!error && res.statusCode == 200) {
-    console.log(body) // Show the HTML for the Google homepage.
-  }else{
-  	console.log(error, res.statusCode);
-  }
-});
-
 var assert = require('chai').assert;
 describe('HomePage', function() {
   describe('Status Code', function() {

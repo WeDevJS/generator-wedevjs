@@ -20,6 +20,9 @@ body {
 	.navbar-right{
 		margin-right: 0;
 	}
+	.login{
+		border-left: 2px solid white;
+	}
 	@media (max-width: 767px) {
 		.navbar-nav {
   			display: inline-block;
@@ -32,6 +35,7 @@ body {
 		.navbar-collapse{
  			padding:0;
 		}
+
 	}
 } 
 

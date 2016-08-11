@@ -1,24 +1,27 @@
 // carusel
-$('.carousel').carousel();
+// $('.carousel').carousel();
 
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngResource']);
 
-app.service('helloService', function(){
-	this.helloService = function(){
-		console.log('Hello Service');
-	}
-})
+app.config(['$resourceProvider', '$locationProvider',
+	// function ($routeProvider, $locationProvider){
+	// $locationProvider.html5Mode(true);
+	// $routeProvider
+	// 	.when('/',{
+	// 		templateUrl: 'partials/index.jade',
+	// 		controller: 'mainController'
+	// 	})
+	// 	.when('/about',{
+	// 		templateUrl: 'partials/about.jade',
+	// 		controller: 'mainController'
+	// 	})
+	// 	.when('/contact',{
+	// 		templateUrl: 'partials/contact.jade',
+	// 		controller: 'mainController'
+	// 	}).otherwise('/');
+});
 
-app.factory('helloFactory', function(){
-	var factory = {};
 
-	factory.helloFactory = function(){
-		console.log('Hello Factory');
-	};
-	return factory
-})
-
-app.controller('mainController', function(helloService, helloFactory){
-	helloFactory.helloFactory();
-	helloService.helloService();
+app.controller('mainController', function(){
+	console.log("Hello");
 });

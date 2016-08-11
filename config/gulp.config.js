@@ -11,6 +11,7 @@ module.exports = function() {
             images:'./app/assets/images/',
             Allviews:'./app/views/**/*.jade',
             views:'./app/views/',
+            partialViews:'./app/views/partials/',
             excludeViewsInclude:'!app/views/includes/**/*.jade'
         },
         server:{
