@@ -1,0 +1,12 @@
+//- index.jade
+//- Include Header
+include ./includes/header.jade
+//- Including Bootstrap default navbar
+include ./includes/navbar.jade
+
+.container(ng-controller="mainController")
+	div(ui-view)
+
+
+//- Include Footer
+include ./includes/footer.jade
