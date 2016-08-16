@@ -1,10 +1,34 @@
+footer.page-footer.cyan.darken-4
+    div.container
+        div.row
+            div.col.l6.s12
+                h5.white-text Footer Content
+                p.grey-text.text-lighten-4 You can use rows and columns here to organize your footer content.
+            div.col.l4.offset-l2.s12
+                h5.white-text Links
+                ul
+                  li
+                    a.grey-text.text-lighten-3(href="#!") Link 1
+                  li
+                    a.grey-text.text-lighten-3(href="#!") Link 2
+                  li
+                    a.grey-text.text-lighten-3(href="#!") Link 3
+                  li
+                    a.grey-text.text-lighten-3(href="#!") Link 4
+        div.footer-copyright
+            div.container © 2016 Copyright Text
+                a.dropdown-button.btn.right(href='#' data-activates='dropdown1') Languaje
+                ul#dropdown1.dropdown-content.right
+                    li #[a(ng-click="changeLanguage('en-US')") English]
+                    li #[a(ng-click="changeLanguage('es')") Spanish]
+
 // bower:js
 script(src='bower_components/angular/angular.js')
 script(src='bower_components/jquery/dist/jquery.js')
 script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
 // endbower 
 script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js")
-
+script(src="bower_components/angular-translate/angular-translate.min.js")
 // inject:js 
 // endinject 
 script(src='assets/js/app.min.js')
@@ -15,10 +39,10 @@ script(src='assets/js/routes.min.js')
 
 //- Google Analytics: change UA-XXXXX-X to be your site's ID.
 //-
-	script
-		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-		e.src='//www.google-analytics.com/analytics.js';
-		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-		ga('create','UA-XXXXX-X');ga('send','pageview');
+    script
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
